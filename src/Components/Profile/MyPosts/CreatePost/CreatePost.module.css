@@ -1,0 +1,18 @@
+.textarea{
+    width: 60%;
+    height: 50px;
+    margin-bottom: 10px;
+    background: var(--main-textarea-color);
+    border: none;
+    color:#d3ddf2
+}
+.button{
+    border: none;
+    width: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #263242;
+    margin-bottom: 50px;
+    color: #d3ddf2;
+    font-weight: bold;
+}

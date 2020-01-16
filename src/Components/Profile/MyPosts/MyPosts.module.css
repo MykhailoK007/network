@@ -1,0 +1,21 @@
+.body{
+    display: flex;
+
+
+
+}
+.empty{
+    width: 30%;
+
+}
+.posts{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.post{
+    width: 100%;
+    padding: 5px;
+    
+}

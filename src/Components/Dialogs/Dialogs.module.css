@@ -1,0 +1,44 @@
+.body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.dialog{
+    width: 30%;
+    padding: 15px;
+    border: 1px solid black;
+   }
+.showDialog{
+    width: 70%;
+    padding: 15px;
+
+
+}
+.a{
+    text-decoration: none;
+    color: black;
+    margin-bottom: 20px;
+
+}
+.createMeassage{
+    width: 70%;
+
+    padding: 20px;
+}
+.textarea{
+    width: 60%;
+    height: 50px;
+    margin-bottom: 10px;
+    background: var(--main-textarea-color);
+    border:none
+}
+.button{
+    border: none;
+    width: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #263242;
+    margin-bottom: 50px;
+}
+

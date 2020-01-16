@@ -1,4 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+:root{
+    --main-text-color:#87324a;
+    --main-textarea-color:#303236;
+}
+body{
+    background: #223c6e;
+    box-sizing: border-box;
+}
 .divWrapper{
     width: 100%;
+
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+    background: #4d5d75;
+
+
 
 }
