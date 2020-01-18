@@ -1,5 +1,6 @@
-import {renderEntireTree} from "../render";
+let renderEntireTree=()=>{
 
+};
 let state={
 
     profile:{
@@ -9,21 +10,33 @@ let state={
         ],
         newPostText:'Create post...'
     },
-    dialog:[
-        {id:1,name:'Misha'},
-        {id:2,name:'Vasya'},
-        {id:3,name:'Petro'}
-    ]
+    dialogs:{
+        dialog:[
+        {id:1,name:'Misha',all:[
+                {id:1,text:'Hello'}
+            ]},
+        {id:2,name:'Vasya',all:[
+                {id:1,text:"Hello"}
+            ]},
+        {id:3,name:'Petro',all:[
+                {id:1,text:"Hello"}
+            ]}
+    ],
+    newMessageText:'Create message...'
+},
+
 
 }
-export function addPost(textPost){
+export function addPost(){
     let newPost={
-        id:state.profile.MyPosts.length,
-        text:textPost,
+        id:state.profile.MyPosts.length+1,
+        text:state.profile.newPostText,
         likes:0
     }
     state.profile.MyPosts.push(newPost);
-    renderEntireTree(state)
+    state.profile.newPostText='Create post...';
+    renderEntireTree(state);
+
 }
 
 export function chanePostText(newText) {
@@ -31,5 +44,22 @@ export function chanePostText(newText) {
     renderEntireTree(state);
 
 }
+export function addMessage(id){
+    let newMessage={
+            id:state.dialogs.dialog[id-1].all.length+1,
+            text:state.dialogs.newMessageText
+    }
+    state.dialogs.dialog[id-1].all.push(newMessage);
+    state.dialogs.newMessageText='Create message...'
+    renderEntireTree(state)
+}
 
+export  function changeTextMessage(text){
+        state.dialogs.newMessageText=text;
+        renderEntireTree(state);
+}
+
+export function subscribe(observer){
+    renderEntireTree = observer;
+}
 export default state;

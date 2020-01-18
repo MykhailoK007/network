@@ -8,12 +8,10 @@ function CreatePost(props) {
     function createPo() {
         let text = posteRef.current.value;
         props.addPost(text);
-        props.changeText('')
     }
     function onTextChange() {
         let text=posteRef.current.value;
         props.changeText(text);
-        console.log(text)
 
     }
     return (

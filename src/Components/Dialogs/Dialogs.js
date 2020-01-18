@@ -3,11 +3,13 @@ import classes from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import ShowDialog from "./ShowDialog/ShowDialog";
+import {Route} from "react-router-dom";
 function Dialog(props){
+
     return(
         <div className={classes.dialog}>
             {
-                props.dialogs.map(elem=>{
+                props.dialog.map(elem=>{
                 return <DialogItem name={elem.name} id={elem.id} key={elem.id}/>
                 })
             }
@@ -18,20 +20,21 @@ function Dialog(props){
 
 
 function Dialogs(props){
-    let messageRef=React.createRef();
-    function sendMessage() {
-        let text=messageRef.current.value;
-        console.log(text);
-    }
+
     return (
-        <div className={'container '+ classes.body}>
-                <Dialog dialogs={props.dialogs} />
-                <ShowDialog/>
-                <div className={classes.createMeassage}>
-            <textarea ref={messageRef} className={classes.textarea}/>
-       <br/>
-            <button  className={classes.button} onClick={sendMessage}>ADD</button>
-                </div>
+        <div className={'container ' + classes.body}>
+            <Dialog dialog={props.dialogs.dialog}/>
+
+            {
+                props.dialogs.dialog.map(elem=>{
+                  return  <Route exact path={'/Dialogs/'+elem.id} render={()=>
+                      <ShowDialog element={elem}
+                                  addMessage={props.addMessage}
+                                  changeTextMessage={props.changeTextMessage} textMessage={props.dialogs.newMessageText}/> }/>
+                })
+            }
+
+
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './Header.module.css';
-import Nav from "../Nav/Nav";
+import Nav from "./Nav/Nav";
 
 function Header() {
     return (
