@@ -1,16 +1,17 @@
 import React from "react";
 import classes from "../Dialogs.module.css";
 import {Route} from 'react-router-dom';
+import {addMessageActionCreator,updateTextMessageActionCreator} from "../../../redux/dialog-reducer";
+
 function ShowDialog(props) {
     let textareaRef = React.createRef();
 
     function sendMessage() {
-        let text = textareaRef.current.value;
-        props.addMessage(props.element.id);
+        props.dispatch(addMessageActionCreator(props.element.id));
     }
-    function changeTextMessage(){
-       let text=textareaRef.current.value;
-       props.changeTextMessage(text);
+    function changeTextMessage(e){
+       let text=e.target.value;
+    props.dispatch(updateTextMessageActionCreator(text))
     }
 
 
@@ -22,7 +23,7 @@ function ShowDialog(props) {
             })}
 
                 <div className={classes.createMeassage}>
-                <textarea ref={textareaRef} className={classes.textarea} value={props.textMessage} onChange={changeTextMessage}/>
+                <textarea ref={textareaRef} className={classes.textarea} value={props.textMessage} onChange={changeTextMessage} placeholder={'Create message...'}/>
                 <br/>
                 <button className={classes.button} onClick={sendMessage}>ADD</button>
             </div>

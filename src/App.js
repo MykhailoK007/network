@@ -13,11 +13,10 @@ function App(props) {
 
             <div className='divWrapper'>
                 <Header/>
-                <Route exact path='/Profile' render={()=><Profile posts={props.AppState.profile} addPost={props.addPost} changeText={props.changeText}/> }/>
+                <Route exact path='/Profile' render={()=><Profile posts={props.AppState.profile} dispatch={props.dispatch}/> }/>
                 <Route exect path='/Dialogs' render={()=>
                     <Dialogs dialogs={props.AppState.dialogs}
-                             addMessage={props.addMessage}
-                             changeTextMessage={props.changeTextMessage}/>}/>
+                             dispatch={props.dispatch}/>}/>
                 <Route exact path='/News' render={()=><News/>} />
             </div>
 

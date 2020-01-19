@@ -20,17 +20,15 @@ function Dialog(props){
 
 
 function Dialogs(props){
-
     return (
         <div className={'container ' + classes.body}>
             <Dialog dialog={props.dialogs.dialog}/>
 
             {
                 props.dialogs.dialog.map(elem=>{
-                  return  <Route exact path={'/Dialogs/'+elem.id} render={()=>
-                      <ShowDialog element={elem}
-                                  addMessage={props.addMessage}
-                                  changeTextMessage={props.changeTextMessage} textMessage={props.dialogs.newMessageText}/> }/>
+                  return  <Route exact path={'/Dialogs/'+elem.id} key={elem.id} render={()=>
+                      <ShowDialog element={elem} dispatch={props.dispatch}
+                                  textMessage={props.dialogs.newMessageText}  /> }/>
                 })
             }
 

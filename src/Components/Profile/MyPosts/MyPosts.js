@@ -9,12 +9,13 @@ function Post(props) {
     )
 }
 function MyPosts(props) {
+
 return(
     <div className={classes.body}>
         <div className={classes.empty}></div>
         <div className={classes.posts}>
             <h1>My posts</h1>
-            <CreatePost addPost={props.addPost} changeText={props.changeText} newPostText={props.newPostText}/>
+            <CreatePost dispatch={props.dispatch} newPostText={props.newPostText}/>
         {
 
             props.posts.map(elem=>{

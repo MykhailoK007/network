@@ -8,7 +8,7 @@ function Profile(props) {
         <div className='container'>
             <Info/>
 
-            <MyPosts posts={props.posts.MyPosts} addPost={props.addPost} newPostText={props.posts.newPostText} changeText={props.changeText}/>
+            <MyPosts posts={props.posts.MyPosts} dispatch={props.dispatch} newPostText={props.posts.newPostText} />
         </div>
     )
 }
