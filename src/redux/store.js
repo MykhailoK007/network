@@ -2,7 +2,7 @@ import profileReducer from "./profile-reducer";
 import dialogReducer from "./dialog-reducer";
 
 
-let store={
+let store ={
     _state:{
 
         profile:{
@@ -32,41 +32,9 @@ let store={
     getState(){
         return this._state;
     },
+
     _callSubscribe(){
         },
-
-    // addPost(){
-    //
-    //     let newPost={
-    //         id:this._state.profile.MyPosts.length+1,
-    //         text:this._state.profile.newPostText,
-    //         likes:0
-    //     }
-    //     this._state.profile.MyPosts.push(newPost);
-    //     this._state.profile.newPostText='Create post...';
-    //     this._callSubscribe(this._state);
-    //
-    // },
-    // chanePostText(newText) {
-    //     this._state.profile.newPostText=newText;
-    //     this._callSubscribe(this._state);
-    //
-    // },
-    // addMessage(id){
-    //     let newMessage={
-    //         id:this._state.dialogs.dialog[id-1].all.length+1,
-    //         text:this._state.dialogs.newMessageText
-    //     }
-    //     this._state.dialogs.dialog[id-1].all.push(newMessage);
-    //     this._state.dialogs.newMessageText='Create message...'
-    //     this._callSubscribe(this._state)
-    // },
-    // changeTextMessage(text){
-    //     this._state.dialogs.newMessageText=text;
-    //     this._callSubscribe(this._state);
-    // },
-    //
-
 
     subscribe(observer){
         this._callSubscribe = observer;

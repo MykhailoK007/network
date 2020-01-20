@@ -7,7 +7,7 @@ import classes from "../Dialogs.module.css";
 function DialogItem(props) {
     return (
         <div>
-            <NavLink  to={'/Dialogs/'+props.id} className={classes.a}>{props.name}</NavLink>
+            <NavLink  to = {'/Dialogs/'+props.id} className = {classes.a}>{props.name}</NavLink>
         </div>
     )
 

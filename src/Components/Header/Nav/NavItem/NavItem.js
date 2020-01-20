@@ -4,9 +4,9 @@ import {NavLink} from 'react-router-dom';
 
 function NavItem(props) {
     return (
-        <div className={classes.div}>
+        <div className = {classes.div}>
 
-            <NavLink to={'/' + props.text} className={classes.a}> {props.text}</NavLink>
+            <NavLink to = {'/' + props.text} className = {classes.a}> {props.text}</NavLink>
         </div>
 
     )

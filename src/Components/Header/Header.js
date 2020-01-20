@@ -4,8 +4,8 @@ import Nav from "./Nav/Nav";
 
 function Header() {
     return (
-        <header className={classes.header}>
-            <h1 className={classes.h1}>Logo</h1>
+        <header className = {classes.header}>
+            <h1 className = {classes.h1}>Logo</h1>
             <Nav/>
         </header>
     )

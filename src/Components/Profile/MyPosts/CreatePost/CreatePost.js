@@ -4,25 +4,25 @@ import {addPostActionCreator,updateTextPostActionCreator} from "../../../../redu
 
 function CreatePost(props) {
 
-    let posteRef = React.createRef();
-
-    function createPo() {
-
-        props.dispatch(addPostActionCreator())
-
+    function createPost() {
+        props.createPost();
     }
+
     function onTextChange(e) {
-        let text=e.target.value;
-      props.dispatch(updateTextPostActionCreator(text))
-
+        let text = e.target.value;
+      props.onTextChange(text);
     }
+
     return (
         <div>
-        <textarea ref={posteRef} className={classes.textarea} onChange={onTextChange} value={props.newPostText} placeholder={'Create Post...'}>
+        <textarea className = {classes.textarea}
+                  onChange = {onTextChange}
+                  value = {props.newPostText}
+                  placeholder = {'Create Post...'}>
 
         </textarea> <br/>
 
-            <button  className={classes.button}  onClick={createPo}>ADD</button>
+            <button  className = {classes.button}  onClick = {createPost}>ADD</button>
         </div>
     )
 }
