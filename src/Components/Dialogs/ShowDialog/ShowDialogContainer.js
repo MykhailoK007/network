@@ -3,25 +3,26 @@ import classes from "../Dialogs.module.css";
 import {Route} from 'react-router-dom';
 import {addMessageActionCreator,updateTextMessageActionCreator} from "../../../redux/dialog-reducer";
 import ShowDialog from "./ShowDialog";
+import {connect} from "react-redux";
 
-function ShowDialogContainer(props) {
-
-
-    function sendMessage(id) {
-        props.store.dispatch(addMessageActionCreator(props.element.id));
+function mapStateToProps(state,props){
+    return {
+        element:props.element,
+        newText:state.dialogs.newMessageText
     }
-    function changeTextMessage(text){
-
-    props.store.dispatch(updateTextMessageActionCreator(text))
-    }
-
-    return (
-        <ShowDialog  textMessage = {props.textMessage}
-                     sendMessage = {sendMessage}
-                     changeTextMessage = {changeTextMessage}
-                     element = {props.element}/>
-    )
-
 }
+function mapDispatchToProps(dispatch){
+    return{
+        addMessageActionCreator:(id)=>{
+            dispatch(addMessageActionCreator(id));
+        },
+        updateTextMessageActionCreator:(text)=>{
+            dispatch(updateTextMessageActionCreator(text));
+        }
+
+    }
+}
+
+const ShowDialogContainer = connect(mapStateToProps,mapDispatchToProps)(ShowDialog);
 
 export default ShowDialogContainer;

@@ -1,30 +1,40 @@
 import React from "react";
 import classes from './MyPosts.module.css';
-import CreatePost from "./CreatePost/CreatePost";
-import CreatePostContainer from "./CreatePost/CreatePostContainer";
-function Post(props) {
-    return (
-            <div className = {classes.post}>
-                {props.text}
-            </div>
-    )
-}
+
+import Post from "./Post/Post";
+import {addPostActionCreator, updateTextPostActionCreator} from "../../../redux/profile-reducer";
+
+
 function MyPosts(props) {
 
-return(
+    let posts=props.store.profile.MyPosts.map(elem=>{ return <Post key={elem.id} text={elem.text}/> });
+
+    function createPost() {
+        props.addPostActionCreator();
+    }
+    function onTextChange(e) {
+        let text = e.target.value;
+        props.updateTextPostActionCreator(text);
+    }
+
+
+    return(
     <div className = {classes.body}>
         <div className = {classes.empty}></div>
         <div className = {classes.posts}>
             <h1>My posts</h1>
-            <CreatePostContainer store = {props.store} newPostText = {props.newPostText}/>
-        {
+            <div>
+                 <textarea className = {classes.textarea}
+                  onChange = {onTextChange}
+                  value = {props.newPostText}
+                  placeholder = {'Create Post...'}>
 
-            props.posts.map(elem => {
-                return <Post text = {elem.text} key = {elem.id}  />
-            })
-        }
-    </div>
-
+                </textarea>
+                 <br/>
+                 <button  className = {classes.button}  onClick = {createPost}>ADD</button>
+            </div>
+            {posts}
+        </div>
     </div>
 )
 }

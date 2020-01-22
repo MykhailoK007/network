@@ -19,17 +19,24 @@ let initalState={
 function dialogReducer(state = initalState,action) {
     switch(action.type){
 
-        case ADD_MESSAGE:
+        case ADD_MESSAGE:{
             let newMessage = {
                 id:state.dialog[action.id-1].all.length+1,
                 text:state.newMessageText
             }
-            state.dialog[action.id-1].all.push(newMessage);
-            state.newMessageText = '';
-            return state;
-        case UPDATE_TEXT_MESSAGE:
-            state.newMessageText = action.newText;
-            return state;
+            let copyState={...state};
+            copyState.dialog=[...state.dialog];
+            copyState.dialog[action.id-1].all.push(newMessage);
+            copyState.newMessageText = '';
+
+            return copyState;
+        }
+        case UPDATE_TEXT_MESSAGE:{
+            let copyState={...state};
+
+            copyState.newMessageText = action.newText;
+            return copyState;
+        }
         default:
             return state;
     }

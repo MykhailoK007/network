@@ -27,8 +27,7 @@ function Dialogs(props){
             {
                 props.dialogs.dialog.map(elem => {
                   return  <Route exact path = {'/Dialogs/'+elem.id} key = {elem.id} render = { () =>
-                      <ShowDialogContainer element = {elem} store={props.store}
-                                  textMessage = {props.dialogs.newMessageText}  /> }/>
+                      <ShowDialogContainer element = {elem}/> }/>
                 })
             }
 
