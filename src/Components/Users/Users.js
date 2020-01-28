@@ -10,11 +10,9 @@ function Users(props){
     function deleteUser(id){
         props.deleteUserAC(id)
     }
-    function changeCurrentPage (page){
-        props.currentPage(page)
-    }
 
-    let pagesCount = props.totalUserCount / props.pageSize;
+
+    let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
 
     let pages = [];
 
@@ -24,20 +22,25 @@ function Users(props){
     return  <div className = 'container'>
                 <div className={classes.pages}>{
                     pages.map(element => {
-                        return <span className={props.currentPage === element && classes.activePage } onClick={changeCurrentPage(element)}>{element}</span>
+                        return <span className={ props.currentPage == element && classes.activePage}
+                                     onClick={() => {props.changeCurrentPage(element)}}>{element}</span>
                     })
                 }</div>
             {
                 props.users.map(element => <div key={element.id}>
 
 
-                       <div >{element.photos.small ? <img className={classes.avatar}
+                       <div className={classes.user}>{element.photos.small ? <img className={classes.avatar}
                                src={element.photos.small} alt=""/> :
                            <img className={classes.avatar}
-                               src="https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg" alt=""/>}
-                           <span>{element.name}</span>
-                           {(element.followed) ? <button onClick={ () => { deleteUser(element.id) }}>Unfollow</button> :
-                               <button onClick={ () => {addUser(element.id) } }>Follow</button>}
+                                src="https://img.icons8.com/cotton/64/000000/person-male--v2.png" alt=""/>}
+                           <div>
+                           <h2>{element.name}</h2>
+                           {(element.followed) ? <button onClick={ () => { deleteUser(element.id) }}
+                               className={classes.button}>Unfollow</button> :
+                               <button onClick={ () => {addUser(element.id) } }
+                                       className={classes.button}>Follow</button>}
+                           </div>
                        </div>
                    </div>
 
