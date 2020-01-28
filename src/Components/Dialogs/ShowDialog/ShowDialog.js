@@ -19,7 +19,7 @@ function ShowDialog(props) {
             })}
                 <div className = {classes.createMeassage}>
                 <textarea className = {classes.textarea}
-                          value = {props.newText}
+                          value = {props.dialog.newMessageText}
                           onChange = {changeTextMessage}
                           placeholder = {'Create message...'}/>
                 <br/>

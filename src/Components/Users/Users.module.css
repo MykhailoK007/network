@@ -1,0 +1,14 @@
+.avatar{
+    width: 150px;
+    height: 100px;
+    overflow: hidden;
+}
+.pages{
+    padding: 20px;
+}
+.page{
+    margin-right: 5px;
+}
+.activePage{
+    font-weight:bold;
+}

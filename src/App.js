@@ -4,20 +4,21 @@ import './App.css';
 import Profile from "./Components/Profile/Profile";
 import Dialogs from './Components/Dialogs/Dialogs';
 import News from "./Components/News/News";
-import Nav from './Components/Header/Nav/Nav';
-import { Route} from 'react-router-dom';
+import {Route, Router} from 'react-router-dom';
+import UsersContainer from "./Components/Users/UsersContainer";
 
 function App(props) {
 
     return (
 
-            <div className='divWrapper'>
+            <div className = 'divWrapper'>
                 <Header/>
-                <Route exact path='/Profile' render={()=><Profile /> }/>
-                <Route exect path='/Dialogs' render={()=>
-                    <Dialogs
-                            dialogs={props.dialogs}/>}/>
-                <Route exact path='/News' render={()=><News/>} />
+
+                    <Route  path = '/Profile' render = {() =><Profile /> }/>
+                    <Route  path = '/Users' render = {() => <UsersContainer/> }/>
+                    <Route  path = '/Dialogs' render = {() => <Dialogs dialogs = {props.dialogs}/>}/>
+                    <Route  path = '/News' render = {( ) => <News/>} />
+
             </div>
 
     );

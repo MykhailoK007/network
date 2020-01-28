@@ -1,14 +1,13 @@
 import React from "react";
-import classes from "../Dialogs.module.css";
-import {Route} from 'react-router-dom';
 import {addMessageActionCreator,updateTextMessageActionCreator} from "../../../redux/dialog-reducer";
 import ShowDialog from "./ShowDialog";
 import {connect} from "react-redux";
 
 function mapStateToProps(state,props){
     return {
-        element:props.element,
-        newText:state.dialogs.newMessageText
+        dialog:state.dialogs,
+        element:props.element
+
     }
 }
 function mapDispatchToProps(dispatch){

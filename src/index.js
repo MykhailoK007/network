@@ -17,8 +17,8 @@ import {Provider} from "react-redux";
 
 
 renderEntireTree(store.getState());
-store.subscribe(()=> {
-    let state=store.getState();
-    renderEntireTree(state);
-
-});
+// store.subscribe(()=> {
+//     let state=store.getState();
+//     renderEntireTree(state);
+//
+// });

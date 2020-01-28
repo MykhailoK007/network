@@ -6,6 +6,7 @@ function Nav() {
         <div className = {classes.div}>
             <nav className = {classes.nav}>
                 <NavItem text = 'Profile' />
+                <NavItem text = 'Users'/>
                 <NavItem text = 'Dialogs'/>
                 <NavItem text = 'News'/>
 
