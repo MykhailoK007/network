@@ -10,7 +10,6 @@ function Profile(props) {
         <div className='container'>
 
             <Info photo={props.profile.photos.small} fullName={props.profile.fullName} aboutMe={props.profile.aboutMe}/>
-            {console.log(props.profile.photos)}
             <MyPostsContainer />
         </div>
     )

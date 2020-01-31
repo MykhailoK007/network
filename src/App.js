@@ -15,7 +15,7 @@ function App(props) {
             <div className = 'divWrapper'>
                 <Header/>
 
-                    <Route  path = '/Profile' render = {() =><ProfileContainer /> }/>
+                    <Route  path = '/Profile/:userId?' render = {() =><ProfileContainer /> }/>
                     <Route  path = '/Users' render = {() => <UsersContainer/> }/>
                     <Route  path = '/Dialogs' render = {() => <Dialogs dialogs = {props.dialogs}/>}/>
                     <Route  path = '/News' render = {( ) => <News/>} />
