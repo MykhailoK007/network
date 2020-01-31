@@ -16,6 +16,7 @@ class UsersContainer extends React.Component{
                 this.props.setTotalUserCount(response.data.totalCount);
 
             })
+
     }
     changeCurrentPage = (page) => {
         this.props.toggleFetching(true);
@@ -37,7 +38,7 @@ class UsersContainer extends React.Component{
                       isFetching = {this.props.isFetching}
                       deleteUser = {this.props.deleteUser}
                       addUser = {this.props.addUser}
-        />
+            />
 
     }
 }

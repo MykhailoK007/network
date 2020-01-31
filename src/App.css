@@ -18,6 +18,9 @@ body{
     margin: 0 auto;
     background: #4d5d75;
 
-
-
+}
+.a{
+    color: var(--main-text-color);
+    text-decoration: none;
+    padding:15px
 }

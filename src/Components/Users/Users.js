@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Users.module.css'
+import {NavLink} from "react-router-dom";
 
 
 function Users(props){
@@ -22,6 +23,7 @@ function Users(props){
     return  <div className = 'container'>
 
         <div className={classes.pages}>{
+
             pages.map(element => {
                 return <span className={ props.currentPage == element && classes.activePage}
                                      onClick={() => {props.changeCurrentPage(element)}}>{element}</span>
@@ -31,7 +33,7 @@ function Users(props){
             {
                 props.users.map(element => <div key={element.id}>
 
-
+                            <NavLink to={'profile/'+element.id} className='a'>
                        <div className={classes.user}>{element.photos.small ? <img className={classes.avatar}
                                src={element.photos.small} alt=""/> :
                            <img className={classes.avatar}
@@ -44,6 +46,7 @@ function Users(props){
                                        className={classes.button}>Follow</button>}
                            </div>
                        </div>
+                         </NavLink>
                    </div>
 
 
