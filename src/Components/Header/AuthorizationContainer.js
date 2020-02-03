@@ -11,8 +11,7 @@ class AuthorizationContainer extends React.Component{
             withCredentials:true
         })
             .then(responce => {
-                console.log(responce.data)
-                if(responce.data.resultCode === 0) {
+                if(responce.data.resultCode == 0) {
                     let {id, login, email} = responce.data.data
                     this.props.setUserData(id, login,email)
                 }
