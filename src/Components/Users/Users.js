@@ -62,8 +62,7 @@ function Users(props){
                                             }
 
                                         })
-                                }}
-                                                          className={classes.button}>Unfollow</button> :
+                                }} className={classes.button}>Unfollow</button> :
                                 <button onClick={() => {
                                     axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${element.id}`, {}, {
                                         withCredentials: true,
