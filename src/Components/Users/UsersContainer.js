@@ -1,7 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
-import {addUser, deleteUser, setCurrentPage, setTotalUserCount, setUsers,toggleFetching} from "../../redux/users-reducer";
-import * as axios from "axios";
+import {
+    addUser,
+    deleteUser,
+    setCurrentPage,
+    setTotalUserCount,
+    setUsers,
+    toggleFetching,
+    toggleFollowingProgress
+} from "../../redux/users-reducer";
 import Users from "./Users";
 import {usersAPI} from "../../api/api";
 
@@ -11,10 +18,12 @@ class UsersContainer extends React.Component{
         this.props.toggleFetching(true);
 
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
+            .then(data =>
+            {
                 this.props.toggleFetching(false);
                 this.props.setUsers(data.items);
                 this.props.setTotalUserCount(data.totalCount);
+                console.log(data)
             })
     }
 
@@ -26,8 +35,10 @@ class UsersContainer extends React.Component{
             .then(data => {
                 this.props.toggleFetching(false);
                 this.props.setUsers(data.items);
+                console.log(data)
             })
     }
+
 
     render() {
         return <Users users = {this.props.users}
@@ -38,6 +49,8 @@ class UsersContainer extends React.Component{
                       isFetching = {this.props.isFetching}
                       deleteUser = {this.props.deleteUser}
                       addUser = {this.props.addUser}
+                      toggleFollowingProgress = {this.props.toggleFollowingProgress}
+                      followingInProgress = {this.props.followingInProgress}
             />
 
     }
@@ -49,10 +62,11 @@ function mapStateToProps(state){
             currentPage:state.users.currentPage,
             pageSize:state.users.pageSize,
             totalUserCount:state.users.totalUserCount,
-            isFetching:state.users.isFetching
+            isFetching:state.users.isFetching,
+            followingInProgress: state.users.followingInProgress
     }
 };
 
 
 export default connect(mapStateToProps,{
-    addUser, deleteUser, setUsers, setCurrentPage, setTotalUserCount,toggleFetching})(UsersContainer);
+    addUser, deleteUser, setUsers, setCurrentPage, setTotalUserCount,toggleFetching,toggleFollowingProgress})(UsersContainer);

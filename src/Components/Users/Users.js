@@ -5,7 +5,6 @@ import * as axios from "axios";
 
 
 function Users(props){
-
     function addUser(id){
         props.addUser(id)
     }
@@ -17,16 +16,17 @@ function Users(props){
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
 
     let pages = [];
-
     let number = 1;
     for(let i = number; i <= pagesCount; i++){
         pages.push(i);
     }
-    return  <div className = 'container'>
+    return (
+        <div className = 'container'>
 
         <div className={classes.pages}>{
 
             pages.map((element,index) => {
+
                 return <span key={index} className={ props.currentPage == element && classes.activePage}
                              onClick={() => {props.changeCurrentPage(element)}} >{element} </span>
             })
@@ -34,22 +34,29 @@ function Users(props){
         </div>
             {props.isFetching ?
                 <img src="https://media.giphy.com/media/EhTIih4rcMoSI/giphy.gif"
-                     alt=""style = {{width:300,height:200}}/>:null}
+                     alt=""style = {{width:300,height:200}}/>
+                     :null
+            }
 
-                     {props.users.map(element => <div key={element.id}>
-
-
+            {props.users.map(element => <div key={element.id}>
                     <div className={classes.user}>
+
                         <NavLink to={'profile/' + element.id} className='a'>
-                            {element.photos.small ? <img className={classes.avatar}
-                                                         src={element.photos.small} alt=""/> :
-                                <img className={classes.avatar}
+                            {element.photos.small
+                                ? <img className={classes.avatar}
+                                       src={element.photos.small} alt=""/>
+                                : <img className={classes.avatar}
                                      src="https://img.icons8.com/cotton/64/000000/person-male--v2.png" alt=""/>}
                         </NavLink>
 
                         <div>
-                            <h2>{element.name}</h2>
-                            {(element.followed) ? <button onClick={() => {
+                            <h2>{element.id}</h2>
+
+                            {(element.followed)
+                                ? <button
+                                    disabled={props.followingInProgress.some(id => id === element.id)}
+                                    onClick={() => {
+                                            props.toggleFollowingProgress(true,element.id)
                                     axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${element.id}`, {
                                         withCredentials: true,
                                         headers: {
@@ -60,10 +67,17 @@ function Users(props){
                                             if (responce.data.resultCode == 0) {
                                                 deleteUser(element.id)
                                             }
+                                            props.toggleFollowingProgress(false,element.id)
 
                                         })
-                                }} className={classes.button}>Unfollow</button> :
-                                <button onClick={() => {
+                                }}
+                                className={classes.button}>Unfollow</button>
+
+                                :<button
+                                    disabled={props.followingInProgress.some(id => id === element.id)}
+                                    onClick={() => {
+                                    props.toggleFollowingProgress(true,element.id)
+
                                     axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${element.id}`, {}, {
                                         withCredentials: true,
                                         headers: {
@@ -71,21 +85,25 @@ function Users(props){
                                         }
                                     })
                                         .then(responce => {
-                                            console.log(responce)
                                             if (responce.data.resultCode == 0) {
                                                 addUser(element.id)
                                             }
+                                            props.toggleFollowingProgress(false,element.id)
+
 
                                         })
                                 }}
-                                        className={classes.button}>Follow</button>}
+                                    className={classes.button}>
+                                    Follow
+                                </button>
+                            }
                         </div>
                     </div>
 
             </div>
             )
         }
-        </div>
+        </div>)
 
 
 
