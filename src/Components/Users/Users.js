@@ -50,7 +50,7 @@ function Users(props){
                         </NavLink>
 
                         <div>
-                            <h2>{element.id}</h2>
+                            <h2>{element.name}</h2>
 
                             {(element.followed)
                                 ? <button
