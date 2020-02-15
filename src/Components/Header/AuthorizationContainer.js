@@ -1,22 +1,14 @@
 import React from "react";
 import * as axios from "axios";
-import {setUserData} from "../../redux/authorization-reducer";
+import {getAuthorizationInfo, setUserData} from "../../redux/authorization-reducer";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
 import classes from './Header.module.css'
 class AuthorizationContainer extends React.Component{
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{
-            withCredentials:true
-        })
-            .then(responce => {
-                if(responce.data.resultCode == 0) {
-                    let {id, login, email} = responce.data.data
-                    this.props.setUserData(id, login,email)
-                }
 
-            })
+        this.props.getAuthorizationInfo()
     }
 
     render() {
@@ -38,4 +30,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps,{setUserData})(AuthorizationContainer);
+export default connect(mapStateToProps,{getAuthorizationInfo})(AuthorizationContainer);

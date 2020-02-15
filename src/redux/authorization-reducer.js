@@ -1,3 +1,5 @@
+import {authorizationApi} from "../api/api";
+
 const SET_USER_DATA = 'SET-USER-DATA';
 
 
@@ -35,4 +37,13 @@ export const setUserData = (id, login, email) => {
         }
     }
 };
+export const getAuthorizationInfo = () => dispatch =>{
+    authorizationApi.getInfo()
+        .then(data =>{
+            if(data.resultCode == 0) {
+                let {id, login, email} =data.data
+                dispatch(setUserData(id, login,email))
+            }
+        })
+}
 export default authorizationReducer;
