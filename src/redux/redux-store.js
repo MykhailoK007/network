@@ -1,4 +1,4 @@
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import profileReducer from "./profile-reducer";
 import dialogReducer from "./dialog-reducer";
 import usersReducer from "./users-reducer";
@@ -11,7 +11,7 @@ let reducers = combineReducers({
     authorization:authorizationReducer
 })
 
-let store=createStore(reducers);
+let store=createStore(reducers,applyMiddleware());
 
 
 export default store;

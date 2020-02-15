@@ -29,7 +29,7 @@ class UsersContainer extends React.Component{
     }
 
     changeCurrentPage = (page) => {
-        
+
         this.props.toggleFetching(true);
         this.props.setCurrentPage(page);
         console.log(page);
