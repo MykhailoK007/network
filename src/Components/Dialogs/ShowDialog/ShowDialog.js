@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "../Dialogs.module.css";
+import {Redirect} from "react-router-dom";
 
 function ShowDialog(props) {
 
@@ -10,6 +11,7 @@ function ShowDialog(props) {
        let text = e.target.value;
     props.updateTextMessageActionCreator(text);
     }
+    if(props.isAuth)return <Redirect to='/login'/>
 
     return (
         <div className = {classes.showDialog}>
