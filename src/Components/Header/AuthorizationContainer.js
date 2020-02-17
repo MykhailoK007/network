@@ -1,9 +1,9 @@
 import React from "react";
-import * as axios from "axios";
-import {getAuthorizationInfo, setUserData} from "../../redux/authorization-reducer";
+import {getAuthorizationInfo} from "../../redux/authorization-reducer";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
 import classes from './Header.module.css'
+
 class AuthorizationContainer extends React.Component{
 
     componentDidMount() {
