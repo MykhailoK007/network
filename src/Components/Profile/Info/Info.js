@@ -1,7 +1,12 @@
 import React from "react";
 
 import classes from './Info.module.css';
+import ProfileStatus from "../../ProfileStatus";
+
+
+
 function Info(props) {
+
 return(
     <div className = {classes.body}>
         <div className = {classes.avatar}>
@@ -12,9 +17,10 @@ return(
         </div>
         <div className = {classes.personalInformation}>
                 <div className = {classes.userName}>{props.fullName}</div>
-            <div>About Me: <br/>{props.aboutMe}</div>
+            <ProfileStatus status={props.aboutMe}/>
         </div>
     </div>
 )
 }
+
 export default Info;
