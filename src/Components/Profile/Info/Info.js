@@ -17,7 +17,7 @@ return(
         </div>
         <div className = {classes.personalInformation}>
                 <div className = {classes.userName}>{props.fullName}</div>
-            <ProfileStatus status={props.aboutMe}/>
+            <ProfileStatus status={props.status} update={this.props.updateStatus}/>
         </div>
     </div>
 )

@@ -3,7 +3,8 @@ import React from "react";
 
 class ProfileStatus extends React.Component{
     state = {
-        editMode:false
+        editMode:false,
+        status:this.props.status
     }
 
     toggleEditMode(){
@@ -21,7 +22,8 @@ class ProfileStatus extends React.Component{
             <div>
                 <input type="text"
                        value={this.props.status}
-                       onBlur={this.toggleEditMode.bind(this)}
+                       onBlur={this.toggleEditMode.bind(this);
+                       this.props.updateStatus()this.state.status}
                        autoFocus={true}
                 />
             </div>}

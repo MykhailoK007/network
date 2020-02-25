@@ -3,6 +3,7 @@ import {usersAPI} from "../api/api";
 const ADD_POST = 'ADD-POST';
 const UPDATE_TEXT_POST = 'UPDATE-TEXT-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_USER_STATUS = 'SET_USER_STATUS';
 
 let initalState={
     MyPosts:[
@@ -10,7 +11,8 @@ let initalState={
         {id:2,text:'This is second',likes:10}
     ],
     newPostText:'',
-    profile:null
+    profile:null,
+    userStatus:''
 }
 
 function profileReducer(state=initalState,action){
@@ -38,6 +40,11 @@ function profileReducer(state=initalState,action){
                 ...state,
                 profile:action.profile
             }
+        case SET_USER_STATUS:
+            return {
+                ...state,
+                status:action.status
+            }
         default:
             return state;
     }
@@ -60,11 +67,31 @@ export const setUserProfile = (profile) => {
         profile
     }
 }
+export const setUserStatus = (status) => {
+    return {
+        type:SET_USER_STATUS,
+        status
+    }
+}
 
 export const getById = (userId) => dispatch => {
     usersAPI.getById(userId)
         .then(data =>{
             dispatch(setUserProfile(data))
+        })
+}
+export const getStatus = (userId) => dispatch => {
+    usersAPI.getStatus(userId)
+        .then(data =>{
+            dispatch(setUserStatus(data.data))
+        } )
+}
+export const updateStatus = (status) => dispatch => {
+    usersAPI.updateStatus(status)
+        .then(data => {
+            if(data.data.resultCode === 0 ) {
+                dispatch(setUserStatus(status))
+            }
         })
 }
 

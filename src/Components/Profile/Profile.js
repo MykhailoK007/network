@@ -9,7 +9,11 @@ function Profile(props) {
     return(
         <div className='container'>
 
-            <Info photo={props.profile.photos.small} fullName={props.profile.fullName} aboutMe={props.profile.aboutMe} />
+            <Info photo={props.profile.photos.small}
+                  fullName={props.profile.fullName}
+                  aboutMe={props.profile.aboutMe}
+                  status={props.status}
+                  updateStatus={props.updateStatus}/>
             <MyPostsContainer />
         </div>
     )
