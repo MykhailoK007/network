@@ -19,6 +19,7 @@ function App(props) {
                     <Route  path = '/Users' render = {() => <UsersContainer/> }/>
                     <Route  path = '/Dialogs' render = {() => <Dialogs dialogs = {props.dialogs}/>}/>
                     <Route  path = '/News' render = {( ) => <News/>} />
+
                     <Route path = '/login' render = {()=><Login/> }/>
 
             </div>

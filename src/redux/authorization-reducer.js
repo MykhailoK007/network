@@ -11,7 +11,7 @@ let initalState = {
 }
 
 function authorizationReducer(state = initalState, action){
-    switch (action.type) {
+    switch(action.type) {
         case SET_USER_DATA :
             return {
                 ...state,
